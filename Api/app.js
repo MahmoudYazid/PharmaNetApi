@@ -1,0 +1,44 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const AddpharmacyApi_1 = require("./router/AddpharmacyApi");
+const AddDrugsToDbApi_1 = require("./router/AddDrugsToDbApi");
+const AddAccountApi_1 = require("./router/AddAccountApi");
+const addWorkerApi_1 = require("./router/addWorkerApi");
+const BuyDrugApi_1 = require("./router/BuyDrugApi");
+const SellDrugApi_1 = require("./router/SellDrugApi");
+const DeleteProcess_1 = require("./router/DeleteProcess");
+const DeleteContractApi_1 = require("./router/DeleteContractApi");
+const GetDrugFromInventoryApi_1 = require("./router/GetDrugFromInventoryApi");
+const GetDrugExistInSystemApi_1 = require("./router/GetDrugExistInSystemApi");
+const GetAllPharmaciesWorkInApi_1 = require("./router/GetAllPharmaciesWorkInApi");
+const GetTheOwner_1 = require("./router/GetTheOwner");
+const LoginApi_1 = require("./router/LoginApi");
+const GetProcessesOfpharmacyApi_1 = require("./router/GetProcessesOfpharmacyApi");
+const GetWorkersInPharmacyApi_1 = require("./router/GetWorkersInPharmacyApi");
+const GetWorkerIdApi_1 = require("./router/GetWorkerIdApi");
+const core = require("cors");
+const app = (0, express_1.default)();
+app.use(core({
+    origin: "*",
+}));
+app.post("/BuyDrug", BuyDrugApi_1.BuyDrugRouter);
+app.post("/addpharmacy", AddpharmacyApi_1.AddPharmacyRouter);
+app.post("/SellDrug", SellDrugApi_1.SellDrugRouter);
+app.post("/AddDrugToDb", AddDrugsToDbApi_1.AddDrugRouter);
+app.post("/AddAccount", AddAccountApi_1.AddAccountRouter);
+app.post("/AddWorker", addWorkerApi_1.AddWorkerRouter);
+app.delete("/DeleteProcess", DeleteProcess_1.DeleteProcessRouter);
+app.delete("/DeleteContract", DeleteContractApi_1.DelteContractRouter);
+app.get("/GetDrugFromInventory", GetDrugFromInventoryApi_1.GetDrugFromInventoryRouter);
+app.get("/GetDrugExistInSystem", GetDrugExistInSystemApi_1.GetDrugExistInSystemRouter);
+app.get("/GetAllPharmaciesThatWorkIn", GetAllPharmaciesWorkInApi_1.GetAllPharmaciesThatWorkInApiRouter);
+app.get("/GetTheOwner", GetTheOwner_1.GetTheOwnerRouter);
+app.get("/Login", LoginApi_1.LoginRouter);
+app.get("/GetProcessesOfPharmacy", GetProcessesOfpharmacyApi_1.GetProcessesOfPharmacyRouter);
+app.get("/GetWorkersInPharmacy", GetWorkersInPharmacyApi_1.GetWorkersInPharmacyRouter);
+app.get("/GetWorkerNameById", GetWorkerIdApi_1.GetWorkerNameByIdRouter);
+app.listen(8000);
